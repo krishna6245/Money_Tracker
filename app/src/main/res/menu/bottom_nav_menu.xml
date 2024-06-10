@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_records"
+        android:icon="@drawable/records"
+        android:title="@string/records" />
+    <item
+        android:id="@+id/tab_analysis"
+        android:icon="@drawable/analysis"
+        android:title="@string/analysis" />
+    <item
+        android:id="@+id/tab_budget"
+        android:icon="@drawable/budget"
+        android:title="@string/budget" />
+    <item
+        android:id="@+id/tab_accounts"
+        android:icon="@drawable/accounts"
+        android:title="@string/accounts" />
+    <item
+        android:id="@+id/tab_categories"
+        android:icon="@drawable/categories"
+        android:title="@string/categories" />
+</menu>
