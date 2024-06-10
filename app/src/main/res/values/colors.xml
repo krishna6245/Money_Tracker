@@ -2,7 +2,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background_color">#FFFDE8</color>
-    <color name="foreground_color">#004F3F</color>
+    <color name="accent_color">#004F3F</color>
     <color name="income_color">#2E7D32</color>
     <color name="expense_color">#C62929</color>
     <color name="transfer_color">#293592</color>
