@@ -5,6 +5,442 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context=".AddRecordActivity">
+
+    <LinearLayout
+        android:id="@+id/addRecordActivityCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
+            app:tint="@color/accent_color"
+            android:src="@drawable/cancel_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="15dp"
+            android:text="CANCEL"
+            android:textColor="@color/accent_color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addRecordActivitySaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
+            app:tint="@color/accent_color"
+            android:src="@drawable/save_icon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/accent_color"
+            android:text="SAVE"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addRecordActivityModeSelectLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addRecordActivitySaveButton">
+
+        <TextView
+            android:id="@+id/addRecordActivityIncomeButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="INCOME"
+            android:textAlignment="center"
+            android:textColor="@color/accent_color_light"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/seprator_icon"
+            app:tint="@color/accent_color" />
+
+        <TextView
+            android:id="@+id/addRecordActivityExpenseButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="EXPENSE"
+            android:textAlignment="center"
+            android:textColor="@color/accent_color"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/seprator_icon"
+            app:tint="@color/accent_color" />
+
+        <TextView
+            android:id="@+id/addRecordActivityTransferButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="TRANSFER"
+            android:textAlignment="center"
+            android:textColor="@color/accent_color_light"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/addRecordActivityFromText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account"
+        android:textSize="16sp"
+        android:textColor="@color/accent_color_light"
+        app:layout_constraintEnd_toEndOf="@+id/addRecordActivityFromButton"
+        app:layout_constraintStart_toStartOf="@+id/addRecordActivityFromButton"
+        app:layout_constraintTop_toBottomOf="@+id/addRecordActivityModeSelectLayout" />
+
+    <LinearLayout
+        android:id="@+id/addRecordActivityFromButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/large_button_layout"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/addRecordActivityToButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addRecordActivityFromText">
+
+        <ImageView
+            android:id="@+id/addRecordActivityFromImage"
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/accounts"
+            app:tint="@color/accent_color_light" />
+
+        <TextView
+            android:id="@+id/addRecordActivityFromName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:layout_marginStart="2dp"
+            android:textSize="16sp"
+            android:textColor="@color/accent_color"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/addRecordActivityToText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textSize="16sp"
+        android:textColor="@color/accent_color_light"
+        app:layout_constraintEnd_toEndOf="@+id/addRecordActivityToButton"
+        app:layout_constraintStart_toStartOf="@+id/addRecordActivityToButton"
+        app:layout_constraintTop_toBottomOf="@+id/addRecordActivityModeSelectLayout" />
+
+    <LinearLayout
+        android:id="@+id/addRecordActivityToButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/large_button_layout"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toEndOf="@id/addRecordActivityFromButton"
+        app:layout_constraintTop_toBottomOf="@id/addRecordActivityToText"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/addRecordActivityToImage"
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/categories"
+            app:tint="@color/accent_color_light" />
+
+        <TextView
+            android:id="@+id/addRecordActivityToName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:layout_marginStart="2dp"
+            android:textSize="16sp"
+            android:textColor="@color/accent_color"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/addRecordActivityNotesEditText"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="5dp"
+        android:padding="8dp"
+        android:textColor="@color/accent_color"
+        android:textSize="16sp"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:hint="Add Notes"
+        android:background="@drawable/large_button_layout_filled"
+        app:layout_constraintEnd_toEndOf="@+id/addRecordActivityToButton"
+        app:layout_constraintStart_toStartOf="@+id/addRecordActivityFromButton"
+        app:layout_constraintTop_toBottomOf="@+id/addRecordActivityFromButton" />
+
+    <LinearLayout
+        android:id="@+id/addRecordActivityAmountLayout"
+        android:layout_width="0dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/large_button_layout"
+        android:gravity="center"
+        android:foregroundGravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/addRecordActivityNotesEditText"
+        app:layout_constraintStart_toStartOf="@+id/addRecordActivityNotesEditText"
+        app:layout_constraintTop_toBottomOf="@+id/addRecordActivityNotesEditText">
+
+        <ImageView
+            android:id="@+id/addRecordActivityPreviousOperator"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/add_icon"
+            android:layout_marginStart="5dp"
+            android:visibility="invisible"
+            app:tint="@color/accent_color_light"
+            android:layout_gravity="center"/>
+
+
+        <TextView
+            android:id="@+id/addRecordActivityAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:gravity="center_vertical|end"
+            android:text="0"
+            android:textColor="@color/accent_color"
+            android:textSize="70sp" />
+
+        <ImageView
+            android:id="@+id/addRecordActivityDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/delete_icon"
+            app:tint="@color/accent_color" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addRecordActivityDateTimeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/addRecordActivityDateSelect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="June 12, 2024"
+            android:textColor="@color/accent_color"
+            android:textSize="18sp" />
+
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/accent_color_light" />
+
+        <TextView
+            android:id="@+id/addRecordActivityTimeSelect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="8:20 AM"
+            android:textColor="@color/accent_color"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="-2dp"
+        android:layout_marginEnd="-2dp"
+        app:columnCount="4"
+        app:rowCount="4"
+        app:layout_constraintBottom_toTopOf="@+id/addRecordActivityDateTimeLayout"
+        app:layout_constraintEnd_toEndOf="@+id/addRecordActivityAmountLayout"
+        app:layout_constraintStart_toStartOf="@+id/addRecordActivityAmountLayout"
+        app:layout_constraintTop_toBottomOf="@+id/addRecordActivityAmountLayout">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButtonPlus"
+            android:text="+"
+            style="@style/CalculatorButtonOperator"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton7"
+            android:text="7"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton8"
+            android:text="8"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton9"
+            android:text="9"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButtonMinus"
+            android:text="-"
+            style="@style/CalculatorButtonOperator"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton4"
+            android:text="4"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton5"
+            android:text="5"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton6"
+            android:text="6"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButtonMultiply"
+            android:text="*"
+            style="@style/CalculatorButtonOperator"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton1"
+            android:text="1"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton2"
+            android:text="2"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton3"
+            android:text="3"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButtonDivide"
+            android:text="/"
+            style="@style/CalculatorButtonOperator"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButton0"
+            android:text="0"
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButtonDot"
+            android:text="."
+            style="@style/CalculatorButton"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addRecordActivityButtonEqualTo"
+            android:text="="
+            style="@style/CalculatorButtonOperator"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"/>
+
+    </androidx.gridlayout.widget.GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
