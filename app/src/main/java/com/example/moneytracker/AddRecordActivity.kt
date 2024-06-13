@@ -1,5 +1,7 @@
 package com.example.moneytracker
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -14,14 +16,12 @@ class AddRecordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddRecordBinding
 
     private var monthNamesShort = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-    private var monthLengths = arrayOf(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
     private var currentDay = 0
     private var currentMonth = 0
     private var currentYear = 0
     private var currentHour = 0
     private var currentMinute = 0
-    private var currentSecond = 0
 
     private var currentRecordMode = "expense"
 
@@ -54,37 +54,30 @@ class AddRecordActivity : AppCompatActivity() {
         setCalculator()
     }
     private fun initializeUiElements(){
-        setDateTime()
-
-        binding.addRecordActivityAmount.text = "0"
-    }
-    private fun setDateTime(){
         val calendar = Calendar.getInstance()
 
         currentDay = calendar.get(Calendar.DAY_OF_MONTH)
         currentMonth = calendar.get(Calendar.MONTH)
         currentYear = calendar.get(Calendar.YEAR)
+        setDate()
+
         currentHour = calendar.get(Calendar.HOUR_OF_DAY)
         currentMinute = calendar.get(Calendar.MINUTE)
-        currentSecond = calendar.get(Calendar.SECOND)
+        setTime()
 
-        if(currentYear%4==0){
-            monthLengths[1]=29
-        }
-        else{
-            monthLengths[1]=28
-        }
-
-        val amPmString = if (currentHour < 12) "AM" else "PM"
-        if(currentHour > 12){
-            currentHour -= 12
-        }
-
+        binding.addRecordActivityAmount.text = "0"
+    }
+    private fun setDate(){
         val monthName = monthNamesShort[currentMonth]
-        val date = "$monthName $currentDay, $currentYear"
-        val time = "$currentHour:$currentMinute $amPmString"
 
+        val date = "$monthName $currentDay, $currentYear"
         binding.addRecordActivityDateSelect.text = date
+    }
+    private fun setTime(){
+        val amPmString = if (currentHour < 12) "AM" else "PM"
+        val currentAdjustedHour = if (currentHour > 12) currentHour - 12 else currentHour
+
+        val time = "$currentAdjustedHour:$currentMinute $amPmString"
         binding.addRecordActivityTimeSelect.text = time
     }
     private fun setListeners(){
@@ -113,11 +106,29 @@ class AddRecordActivity : AppCompatActivity() {
         }
 
         binding.addRecordActivityDateSelect.setOnClickListener{
-            //showDatePickerDialog()
+            showDatePickerDialog()
         }
         binding.addRecordActivityTimeSelect.setOnClickListener {
-            //showTimePickerDialog()
+            showTimePickerDialog()
         }
+    }
+    private fun showDatePickerDialog(){
+        val datePickerDialog = DatePickerDialog(this,R.style.CustomDatePickerDialogTheme, { _, selectedYear, selectedMonth, selectedDay ->
+            currentYear = selectedYear
+            currentMonth = selectedMonth
+            currentDay = selectedDay
+            setDate()
+        }, currentYear, currentMonth, currentDay)
+
+        datePickerDialog.show()
+    }
+    private fun showTimePickerDialog(){
+        val timePickerDialog = TimePickerDialog(this,R.style.CustomTimePickerDialogTheme ,{ _, selectedHour, selectedMinute ->
+            currentHour = selectedHour
+            currentMinute = selectedMinute
+            setTime()
+        }, currentHour, currentMinute, false)
+        timePickerDialog.show()
     }
     private fun updateRecordMode(newRecordMode : String){
         setRecordModeColor(currentRecordMode,accentColorLight)
