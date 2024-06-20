@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/recordLayoutSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:alpha="0.15"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/accent_color"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:paddingStart="6dp"
+        android:background="@color/background_color">
+        <ImageView
+            android:id="@+id/recordLayoutCategoryImage"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:paddingEnd="5dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/transfer_icon"
+            android:cropToPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"  />
+
+        <TextView
+            android:id="@+id/recordLayoutCategoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Transfer"
+            android:alpha="0.8"
+            android:textColor="@color/accent_color"
+            android:textSize="16sp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toEndOf="@+id/recordLayoutCategoryImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/recordLayoutTransactionAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="1,000.00"
+            android:textColor="@color/transfer_color"
+            android:textSize="16sp"
+            android:alpha="0.85"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_marginTop="2dp"
+            app:layout_constraintStart_toEndOf="@id/recordLayoutCategoryImage"
+            app:layout_constraintEnd_toStartOf="@id/recordLayoutTransactionAmount"
+            app:layout_constraintTop_toBottomOf="@id/recordLayoutCategoryName">
+            <ImageView
+                android:id="@+id/recordLayoutFromImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:alpha="0.5"
+                android:padding="1dp"
+                android:src="@drawable/savings_icon"/>
+
+            <TextView
+                android:id="@+id/recordLayoutFromCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/accent_color"
+                android:textSize="14sp"
+                android:text="Cash"
+                android:alpha="0.5"
+                android:layout_marginStart="2dp"/>
+            <ImageView
+                android:id="@+id/recordLayoutTransferIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:alpha="0.7"
+                android:src="@drawable/account_transfer_icon"
+                app:tint="@color/accent_color" />
+            <ImageView
+                android:id="@+id/recordLayoutToImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:alpha="0.5"
+                android:padding="1dp"
+                android:src="@drawable/cash_icon"/>
+
+            <TextView
+                android:id="@+id/recordLayoutToCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="miscellaneous"
+                android:alpha="0.5"
+                android:layout_marginStart="2dp"
+                android:textColor="@color/accent_color"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -9,7 +9,7 @@ class BlankActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_blank)
 
-        val intent = Intent(this, AddRecordActivity::class.java)  //Redirect to opening page
+        val intent = Intent(this, MainActivity::class.java)  //Redirect to opening page
         startActivity(intent)
         finish()
     }

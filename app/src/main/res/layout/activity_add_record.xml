@@ -32,8 +32,9 @@
             android:layout_gravity="center"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="15dp"
+            android:fontFamily="@font/roboto_medium"
             android:text="CANCEL"
-            android:textColor="@color/accent_color"/>
+            android:textColor="@color/accent_color" />
 
     </LinearLayout>
 
@@ -54,14 +55,16 @@
             android:layout_marginStart="15dp"
             app:tint="@color/accent_color"
             android:src="@drawable/save_icon"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginEnd="15dp"
             android:layout_marginStart="5dp"
-            android:textColor="@color/accent_color"
-            android:text="SAVE"/>
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="SAVE"
+            android:textColor="@color/accent_color" />
 
     </LinearLayout>
 
@@ -80,42 +83,48 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="INCOME"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Income"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="@color/accent_color_light"
             android:textSize="18sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/seprator_icon"
-            app:tint="@color/accent_color" />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/accent_color_light" />
 
         <TextView
             android:id="@+id/addRecordActivityExpenseButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="EXPENSE"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Expense"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="@color/accent_color"
             android:textSize="18sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/seprator_icon"
-            app:tint="@color/accent_color" />
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/accent_color_light" />
 
         <TextView
             android:id="@+id/addRecordActivityTransferButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="TRANSFER"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Transfer"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="@color/accent_color_light"
             android:textSize="18sp" />
 
@@ -125,9 +134,10 @@
         android:id="@+id/addRecordActivityFromText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
         android:text="Account"
-        android:textSize="16sp"
         android:textColor="@color/accent_color_light"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/addRecordActivityFromButton"
         app:layout_constraintStart_toStartOf="@+id/addRecordActivityFromButton"
         app:layout_constraintTop_toBottomOf="@+id/addRecordActivityModeSelectLayout" />
@@ -136,22 +146,22 @@
         android:id="@+id/addRecordActivityFromButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
         android:background="@drawable/large_button_layout"
         android:gravity="center"
+        android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toStartOf="@+id/addRecordActivityToButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addRecordActivityFromText">
 
         <ImageView
             android:id="@+id/addRecordActivityFromImage"
-            android:layout_gravity="center"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_gravity="center"
             android:src="@drawable/accounts"
             app:tint="@color/accent_color_light" />
 
@@ -159,10 +169,11 @@
             android:id="@+id/addRecordActivityFromName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Account"
             android:layout_marginStart="2dp"
-            android:textSize="16sp"
-            android:textColor="@color/accent_color"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="Account"
+            android:textColor="@color/accent_color"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -170,9 +181,10 @@
         android:id="@+id/addRecordActivityToText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
         android:text="Category"
-        android:textSize="16sp"
         android:textColor="@color/accent_color_light"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/addRecordActivityToButton"
         app:layout_constraintStart_toStartOf="@+id/addRecordActivityToButton"
         app:layout_constraintTop_toBottomOf="@+id/addRecordActivityModeSelectLayout" />
@@ -181,22 +193,22 @@
         android:id="@+id/addRecordActivityToButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/large_button_layout"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/addRecordActivityFromButton"
-        app:layout_constraintTop_toBottomOf="@id/addRecordActivityToText"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/addRecordActivityToText">
 
         <ImageView
             android:id="@+id/addRecordActivityToImage"
-            android:layout_gravity="center"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_gravity="center"
             android:src="@drawable/categories"
             app:tint="@color/accent_color_light" />
 
@@ -204,10 +216,11 @@
             android:id="@+id/addRecordActivityToName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category"
             android:layout_marginStart="2dp"
-            android:textSize="16sp"
-            android:textColor="@color/accent_color"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="Category"
+            android:textColor="@color/accent_color"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -258,6 +271,7 @@
             android:layout_marginEnd="15dp"
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
+            android:fontFamily="@font/roboto_medium"
             android:gravity="center_vertical|end"
             android:text="0"
             android:textColor="@color/accent_color"
@@ -291,6 +305,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="June 12, 2024"
             android:textColor="@color/accent_color"
@@ -309,6 +324,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto_medium"
             android:gravity="center"
             android:text="8:20 AM"
             android:textColor="@color/accent_color"
@@ -338,24 +354,27 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton7"
-            android:text="7"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="7"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton8"
-            android:text="8"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="8"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton9"
-            android:text="9"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="9"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButtonMinus"
@@ -366,24 +385,27 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton4"
-            android:text="4"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="4"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton5"
-            android:text="5"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="5"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton6"
-            android:text="6"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="6"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButtonMultiply"
@@ -394,24 +416,27 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton1"
-            android:text="1"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="1"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton2"
-            android:text="2"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="2"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton3"
-            android:text="3"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="3"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButtonDivide"
@@ -422,17 +447,19 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButton0"
-            android:text="0"
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="0"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButtonDot"
-            android:text="."
             style="@style/CalculatorButton"
-            app:layout_rowWeight="1"
-            app:layout_columnWeight="1"/>
+            android:fontFamily="@font/roboto_medium"
+            android:text="."
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/addRecordActivityButtonEqualTo"

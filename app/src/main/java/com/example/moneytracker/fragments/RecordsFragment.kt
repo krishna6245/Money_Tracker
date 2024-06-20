@@ -1,5 +1,7 @@
 package com.example.moneytracker.fragments
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +13,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.GestureDetectorCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytracker.AddRecordActivity
+import com.example.moneytracker.R
+import com.example.moneytracker.adapters.RecordItemAdapter
 import com.example.moneytracker.databinding.FragmentRecordsBinding
 
 class RecordsFragment : Fragment() {
@@ -32,17 +40,41 @@ class RecordsFragment : Fragment() {
     private fun init(){
         initializeUiElements()
         setListeners()
+        setAdapters()
     }
     private fun initializeUiElements(){
         gestureDetector = GestureDetectorCompat(requireContext(), SwipeGestureListener())
     }
+//    @SuppressLint("ClickableViewAccessibility")
     private fun setListeners(){
-        binding.recordsFragmentRecordList.setOnTouchListener { _, event ->
-            gestureDetector.onTouchEvent(event)
-        }
+        binding.recordsFragmentRecordList.addOnItemTouchListener(
+            RecyclerViewTouchListener(requireContext(), binding.recordsFragmentRecordList, gestureDetector)
+        )
+        binding.recordsFragmentRecordList.performClick()
         binding.recordsFragmentFab.setOnClickListener {
             val intent = Intent(requireContext(), AddRecordActivity::class.java)
             startActivity(intent)
+        }
+    }
+    private fun setAdapters(){
+        val list = mutableListOf("","","","","","","","","","","","","","","","")
+        val adapter = RecordItemAdapter(requireActivity(),list)
+        binding.recordsFragmentRecordList.layoutManager = LinearLayoutManager(requireContext())
+        binding.recordsFragmentRecordList.adapter = adapter
+    }
+    class RecyclerViewTouchListener(
+        context: Context,
+        recyclerView: RecyclerView,
+        private val gestureDetector: GestureDetectorCompat
+    ) : RecyclerView.OnItemTouchListener {
+        override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+            return gestureDetector.onTouchEvent(e)
+        }
+        override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+            // Optional: Handle touch event if needed
+        }
+        override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+            // Optional: Handle request to disallow intercept
         }
     }
     inner class SwipeGestureListener: GestureDetector.SimpleOnGestureListener(){
