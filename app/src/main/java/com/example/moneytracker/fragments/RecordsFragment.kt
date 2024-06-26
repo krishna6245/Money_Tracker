@@ -15,19 +15,25 @@ import android.view.animation.TranslateAnimation
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.GestureDetectorCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytracker.AddRecordActivity
 import com.example.moneytracker.R
 import com.example.moneytracker.adapters.RecordItemAdapter
+import com.example.moneytracker.database.RecordDatabase
+import com.example.moneytracker.databaseClients.RecordDatabaseClient
 import com.example.moneytracker.databinding.FragmentRecordsBinding
+import kotlinx.coroutines.launch
 
 class RecordsFragment : Fragment() {
     private lateinit var binding: FragmentRecordsBinding
 
     private lateinit var gestureDetector: GestureDetectorCompat
     private var isFabHidden = false
+
+    private lateinit var db: RecordDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +50,15 @@ class RecordsFragment : Fragment() {
     }
     private fun initializeUiElements(){
         gestureDetector = GestureDetectorCompat(requireContext(), SwipeGestureListener())
+
+        db = RecordDatabaseClient.getInstance(requireContext())
+        lifecycleScope.launch {
+            val records = db.recordDao().getAllRecords()
+            for (record in records){
+                log(record)
+            }
+        }
     }
-//    @SuppressLint("ClickableViewAccessibility")
     private fun setListeners(){
         binding.recordsFragmentRecordList.addOnItemTouchListener(
             RecyclerViewTouchListener(requireContext(), binding.recordsFragmentRecordList, gestureDetector)
@@ -62,11 +75,11 @@ class RecordsFragment : Fragment() {
         binding.recordsFragmentRecordList.layoutManager = LinearLayoutManager(requireContext())
         binding.recordsFragmentRecordList.adapter = adapter
     }
-    class RecyclerViewTouchListener(
+
+    inner class RecyclerViewTouchListener(
         context: Context,
         recyclerView: RecyclerView,
-        private val gestureDetector: GestureDetectorCompat
-    ) : RecyclerView.OnItemTouchListener {
+        private val gestureDetector: GestureDetectorCompat) : RecyclerView.OnItemTouchListener {
         override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
             return gestureDetector.onTouchEvent(e)
         }
@@ -77,26 +90,25 @@ class RecordsFragment : Fragment() {
             // Optional: Handle request to disallow intercept
         }
     }
-    inner class SwipeGestureListener: GestureDetector.SimpleOnGestureListener(){
+    inner class SwipeGestureListener : GestureDetector.SimpleOnGestureListener() {
         override fun onFling(
             e1: MotionEvent?,
             e2: MotionEvent,
             velocityX: Float,
             velocityY: Float
-        ): Boolean{
+        ): Boolean {
             super.onFling(e1, e2, velocityX, velocityY)
-            if (e1 == null){
+            if (e1 == null) {
                 return false
             }
             val deltaY = e2.y - e1.y
-            if( deltaY > 0 ){
-                if(isFabHidden){
+            if (deltaY > 0) {
+                if (isFabHidden) {
                     isFabHidden = false
                     swipeDownFab()
                 }
-            }
-            else{
-                if(!isFabHidden){
+            } else {
+                if (!isFabHidden) {
                     isFabHidden = true
                     swipeUpFab()
                 }
@@ -104,20 +116,20 @@ class RecordsFragment : Fragment() {
 
             return true
         }
-    }
-    private fun swipeUpFab(){
-        val translateAnimation = TranslateAnimation(0f, 0f, 0f, 200f)
-        translateAnimation.duration = 300
-        translateAnimation.fillAfter = true
-        binding.recordsFragmentFab.startAnimation(translateAnimation)
-        binding.recordsFragmentFab.isClickable = false
-    }
-    private fun swipeDownFab(){
-        val translateAnimation = TranslateAnimation(0f, 0f, 200f, 0f)
-        translateAnimation.duration = 300
-        translateAnimation.fillAfter = true
-        binding.recordsFragmentFab.startAnimation(translateAnimation)
-        binding.recordsFragmentFab.isClickable = true
+        private fun swipeUpFab() {
+            val translateAnimation = TranslateAnimation(0f, 0f, 0f, 200f)
+            translateAnimation.duration = 300
+            translateAnimation.fillAfter = true
+            binding.recordsFragmentFab.startAnimation(translateAnimation)
+            binding.recordsFragmentFab.isClickable = false
+        }
+        private fun swipeDownFab() {
+            val translateAnimation = TranslateAnimation(0f, 0f, 200f, 0f)
+            translateAnimation.duration = 300
+            translateAnimation.fillAfter = true
+            binding.recordsFragmentFab.startAnimation(translateAnimation)
+            binding.recordsFragmentFab.isClickable = true
+        }
     }
     private fun toast(message: Any?){
         Toast.makeText(requireContext(),"$message", Toast.LENGTH_SHORT).show()

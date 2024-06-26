@@ -3,6 +3,7 @@ package com.example.moneytracker.adapters
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytracker.databinding.RecordLayoutBinding
@@ -11,6 +12,11 @@ class RecordItemAdapter(private val context: Context,
                         private val recordList: MutableList<String>) : RecyclerView.Adapter<RecordItemAdapter.RecordItemViewHolder>() {
 
     inner class RecordItemViewHolder(private val binding: RecordLayoutBinding) : RecyclerView.ViewHolder(binding.root){
+        fun bind(position: Int){
+            if(position == 0){
+                binding.recordLayoutSeparator.visibility = INVISIBLE
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordItemViewHolder {
@@ -23,6 +29,6 @@ class RecordItemAdapter(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: RecordItemViewHolder, position: Int) {
-        Log.d("RecordItemAdapter", "onBindViewHolder: called for $position")
+        holder.bind(position)
     }
 }

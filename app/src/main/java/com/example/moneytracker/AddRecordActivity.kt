@@ -9,11 +9,18 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.moneytracker.dataModels.RecordItemModel
+import com.example.moneytracker.database.RecordDatabase
+import com.example.moneytracker.databaseClients.RecordDatabaseClient
 import com.example.moneytracker.databinding.ActivityAddRecordBinding
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class AddRecordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddRecordBinding
+
+    private lateinit var db: RecordDatabase
 
     private var monthNamesShort = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
@@ -24,6 +31,9 @@ class AddRecordActivity : AppCompatActivity() {
     private var currentMinute = 0
 
     private var currentRecordMode = "expense"
+    private var toAccount = ""
+    private var fromAccount = ""
+    private var category = ""
 
     private var previousAmount: Double = 0.0
     private var previousOperator = "+"
@@ -36,12 +46,6 @@ class AddRecordActivity : AppCompatActivity() {
     private val accentColor = R.color.accent_color
     private val accentColorLight = R.color.accent_color_light
 
-    private fun toast(message: Any?){
-        Toast.makeText(this,"$message", Toast.LENGTH_SHORT).show()
-    }
-    private fun log(message: Any?){
-        Log.d("AddRecordActivity", "$message")
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddRecordBinding.inflate(layoutInflater)
@@ -66,6 +70,8 @@ class AddRecordActivity : AppCompatActivity() {
         setTime()
 
         binding.addRecordActivityAmount.text = "0"
+
+        db = RecordDatabaseClient.getInstance(this)
     }
     private fun setDate(){
         val monthName = monthNamesShort[currentMonth]
@@ -85,7 +91,24 @@ class AddRecordActivity : AppCompatActivity() {
             finish()
         }
         binding.addRecordActivitySaveButton.setOnClickListener {
-            //saveRecord()
+            lifecycleScope.launch {
+                val record = RecordItemModel(
+                    recordType = currentRecordMode,
+                    fromAccount = fromAccount,
+                    toAccount = toAccount,
+                    category = category,
+                    amount = currentAmount,
+                    day = currentDay,
+                    month = currentMonth,
+                    year = currentYear,
+                    hour = currentHour,
+                    minute = currentMinute
+                )
+                record.id = db.recordDao().insert(record)
+                log("Record saved")
+                log(record)
+                toast("Record saved")
+            }
         }
 
         binding.addRecordActivityIncomeButton.setOnClickListener {
@@ -287,6 +310,7 @@ class AddRecordActivity : AppCompatActivity() {
             "/" -> {
                 if (currentAmount == 0.0){
                     toast("Cannot divide by zero")
+                    log("Cannot divide by zero")
                     updateAmount()
                     return false
                 }
@@ -309,5 +333,12 @@ class AddRecordActivity : AppCompatActivity() {
     }
     private fun updateAmount(){
         binding.addRecordActivityAmount.text = currentInput
+    }
+
+    private fun toast(message: Any?){
+        Toast.makeText(this,"$message", Toast.LENGTH_SHORT).show()
+    }
+    private fun log(message: Any?){
+        Log.d("AddRecordActivity", "$message")
     }
 }
