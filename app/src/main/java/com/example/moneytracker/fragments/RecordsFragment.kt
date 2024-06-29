@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytracker.AddRecordActivity
 import com.example.moneytracker.R
 import com.example.moneytracker.adapters.RecordItemAdapter
+import com.example.moneytracker.dataModels.RecordItemModel
 import com.example.moneytracker.database.RecordDatabase
 import com.example.moneytracker.databaseClients.RecordDatabaseClient
 import com.example.moneytracker.databinding.FragmentRecordsBinding
@@ -34,6 +35,7 @@ class RecordsFragment : Fragment() {
     private var isFabHidden = false
 
     private lateinit var db: RecordDatabase
+    private lateinit var recordsList: MutableList<RecordItemModel>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,17 +48,18 @@ class RecordsFragment : Fragment() {
     private fun init(){
         initializeUiElements()
         setListeners()
-        setAdapters()
     }
     private fun initializeUiElements(){
         gestureDetector = GestureDetectorCompat(requireContext(), SwipeGestureListener())
 
         db = RecordDatabaseClient.getInstance(requireContext())
+
+        recordsList = mutableListOf()
+
         lifecycleScope.launch {
-            val records = db.recordDao().getAllRecords()
-            for (record in records){
-                log(record)
-            }
+            recordsList = db.recordDao().getAllRecords().toMutableList()
+
+            setAdapters()
         }
     }
     private fun setListeners(){
@@ -70,8 +73,7 @@ class RecordsFragment : Fragment() {
         }
     }
     private fun setAdapters(){
-        val list = mutableListOf("","","","","","","","","","","","","","","","")
-        val adapter = RecordItemAdapter(requireActivity(),list)
+        val adapter = RecordItemAdapter(requireActivity(),recordsList)
         binding.recordsFragmentRecordList.layoutManager = LinearLayoutManager(requireContext())
         binding.recordsFragmentRecordList.adapter = adapter
     }

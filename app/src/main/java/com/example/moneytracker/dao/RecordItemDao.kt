@@ -5,7 +5,7 @@ import com.example.moneytracker.dataModels.RecordItemModel
 @Dao
 interface RecordItemDao {
     @Insert
-    suspend fun insert(record: RecordItemModel): Long
+    suspend fun insertRecord(record: RecordItemModel): Long
 
     @Query("SELECT * FROM records")
     suspend fun getAllRecords(): List<RecordItemModel>
@@ -19,11 +19,11 @@ interface RecordItemDao {
     }
 
     @Update
-    suspend fun update(record: RecordItemModel): Int
+    suspend fun updateRecord(record: RecordItemModel): Int
 
     @Delete
-    suspend fun delete(record: RecordItemModel): Int
+    suspend fun deleteRecord(record: RecordItemModel): Int
 
     @Query("DELETE FROM records WHERE id = :id")
-    suspend fun deleteById(id: Long): Int
+    suspend fun deleteRecordById(id: Long): Int
 }
