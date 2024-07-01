@@ -55,7 +55,6 @@ class RecordsFragment : Fragment() {
         db = RecordDatabaseClient.getInstance(requireContext())
 
         recordsList = mutableListOf()
-
         lifecycleScope.launch {
             recordsList = db.recordDao().getAllRecords().toMutableList()
 

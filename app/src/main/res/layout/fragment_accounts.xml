@@ -1,14 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AccountsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Accounts Fragment" />
+        android:layout_height="match_parent">
+        
+        <TextView
+            android:id="@+id/accountsFragmentOverall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overall"
+            android:textSize="22sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/accent_color"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/accountsFragmentOverallLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/large_button_layout_filled"
+            android:paddingTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/accountsFragmentOverall">
+    
+            <LinearLayout
+                android:id="@+id/accountsFragmentBalanceLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+    
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="All accounts balance:- "
+                    android:textColor="@color/accent_color"
+                    android:textSize="16dp" />
+    
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="10,000.00"
+                    android:textColor="@color/accent_color"
+                    android:textSize="16dp" />
+            </LinearLayout>
+    
+            <View
+                android:id="@+id/accountsFragmentVerticalDivider"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/accent_color_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/accountsFragmentHorizontalDivider"/>
+    
+            <View
+                android:id="@+id/accountsFragmentHorizontalDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/accent_color_light"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintTop_toBottomOf="@id/accountFragmentTotalExpense"
+                app:layout_constraintBottom_toTopOf="@+id/accountsFragmentBalanceLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+    
+            <TextView
+                android:id="@+id/accountFragmentExpenseText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="EXPENSE SO FAR"
+                android:textColor="@color/accent_color"
+                app:layout_constraintEnd_toStartOf="@+id/accountsFragmentVerticalDivider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+    
+            <TextView
+                android:id="@+id/accountFragmentTotalExpense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="-5,000.0"
+                android:textColor="@color/expense_color"
+                app:layout_constraintEnd_toEndOf="@+id/accountFragmentExpenseText"
+                app:layout_constraintStart_toStartOf="@+id/accountFragmentExpenseText"
+                app:layout_constraintTop_toBottomOf="@+id/accountFragmentExpenseText" />
+    
+            <TextView
+                android:id="@+id/accountFragmentIncomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="INCOME SO FAR"
+                android:textColor="@color/accent_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/accountsFragmentVerticalDivider"
+                app:layout_constraintTop_toTopOf="parent" />
+    
+            <TextView
+                android:id="@+id/accountFragmentTotalIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="15,000.00"
+                android:textColor="@color/income_color"
+                app:layout_constraintEnd_toEndOf="@+id/accountFragmentIncomeText"
+                app:layout_constraintStart_toStartOf="@+id/accountFragmentIncomeText"
+                app:layout_constraintTop_toBottomOf="@+id/accountFragmentIncomeText" />
+    
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+        <TextView
+            android:id="@+id/accountsFragmentAccountsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accounts"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/accent_color"
+            android:textSize="22sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/accountsFragmentOverallLayout"
+            app:layout_constraintStart_toStartOf="@id/accountsFragmentOverall"/>
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/accountsFragmentAccountList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/accountsFragmentAddNewAccountButton"
+            app:layout_constraintTop_toBottomOf="@+id/accountsFragmentAccountsText"/>
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/accountsFragmentAddNewAccountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/large_button_layout_bold"
+            android:layout_marginBottom="10dp"
+            android:padding="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:tint="@color/accent_color"
+                android:src="@drawable/add_new_icon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/accent_color"
+                android:text="ADD NEW ACCOUNT"/>
+            
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity( tableName = "account" )
 data class AccountModel(
     @PrimaryKey( autoGenerate = true )
-    var id: Long,
+    var id: Long = 0,
     var name: String,
     var image: Int,
     var balance: Double,
