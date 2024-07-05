@@ -8,12 +8,12 @@
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:padding="10dp"
-    android:background="@drawable/large_button_layout_filled">
+    android:background="@drawable/large_button_layout_filled_thin">
 
     <ImageView
         android:id="@+id/accountItemLayoutIcon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +27,8 @@
         android:fontFamily="@font/roboto_medium"
         android:text="Account "
         android:textColor="@color/accent_color"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:layout_marginTop="-1dp"
         app:layout_constraintStart_toEndOf="@id/accountItemLayoutIcon"
         app:layout_constraintTop_toTopOf="@id/accountItemLayoutIcon" />
 
@@ -39,7 +40,8 @@
         android:fontFamily="@font/roboto_medium"
         android:text="Balance: "
         android:textColor="@color/accent_color"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:layout_marginBottom="-1dp"
         app:layout_constraintBottom_toBottomOf="@id/accountItemLayoutIcon"
         app:layout_constraintStart_toEndOf="@id/accountItemLayoutIcon" />
 
@@ -51,7 +53,7 @@
         android:fontFamily="@font/roboto_medium"
         android:text="1,000.00"
         android:textColor="@color/accent_color"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="@+id/accountItemLayoutBalanceText"
         app:layout_constraintStart_toEndOf="@+id/accountItemLayoutBalanceText"
@@ -59,8 +61,8 @@
 
     <ImageView
         android:id="@+id/accountItemLayoutOptionButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/options_menu_icon"

@@ -1,4 +1,5 @@
 package com.example.moneytracker.dao
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.moneytracker.dataModels.AccountModel
 
@@ -8,7 +9,10 @@ interface AccountDao {
     suspend fun insertAccount(account: AccountModel): Long
 
     @Query("SELECT * FROM account")
-    suspend fun getAllAccounts(): List<AccountModel>
+    fun getAllAccounts(): LiveData<List<AccountModel>>
+
+    @Query("SELECT * FROM account")
+    suspend fun getAll(): List<AccountModel>
 
     @Query("SELECT * FROM account WHERE id = :accountId")
     suspend fun getAccountById(accountId: Long): AccountModel

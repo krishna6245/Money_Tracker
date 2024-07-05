@@ -40,6 +40,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainActivityMenuLayout"/>
 
+    <View
+        android:id="@+id/mainActivityTitleShadow"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/shadow_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainActivityTitleLayout"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/mainActivityTitleGuideLine"
         android:layout_width="wrap_content"

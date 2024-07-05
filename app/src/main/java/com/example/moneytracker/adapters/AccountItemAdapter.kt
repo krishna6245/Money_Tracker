@@ -7,9 +7,10 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytracker.dataModels.AccountModel
 import com.example.moneytracker.databinding.AccountItemLayoutBinding
+import com.example.moneytracker.helpers.Display
 
-class AccountItemAdapter(private val context: Context,
-                         private val accountList: MutableList<AccountModel>): RecyclerView.Adapter<AccountItemAdapter.AccountItemViewHolder>(){
+class AccountItemAdapter(private val context: Context): RecyclerView.Adapter<AccountItemAdapter.AccountItemViewHolder>(){
+    private var accountList = emptyList<AccountModel>()
     inner class AccountItemViewHolder(private val binding: AccountItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(position: Int){
             binding.apply {
@@ -38,5 +39,12 @@ class AccountItemAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: AccountItemViewHolder, position: Int) {
         holder.bind(position)
+    }
+
+    fun setAccountList(accountList: List<AccountModel>){
+        val display = Display(context)
+        display.toast("hello")
+        this.accountList = accountList
+        notifyDataSetChanged()
     }
 }
