@@ -3,13 +3,12 @@ package com.example.moneytracker.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moneytracker.dataModels.AccountModel
 import com.example.moneytracker.databinding.AccountItemLayoutBinding
 import com.example.moneytracker.helpers.Display
 
-class AccountItemAdapter(private val context: Context): RecyclerView.Adapter<AccountItemAdapter.AccountItemViewHolder>(){
+class AccountAdapter(private val context: Context): RecyclerView.Adapter<AccountAdapter.AccountItemViewHolder>(){
     private var accountList = emptyList<AccountModel>()
     inner class AccountItemViewHolder(private val binding: AccountItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(position: Int){
@@ -43,7 +42,6 @@ class AccountItemAdapter(private val context: Context): RecyclerView.Adapter<Acc
 
     fun setAccountList(accountList: List<AccountModel>){
         val display = Display(context)
-        display.toast("hello")
         this.accountList = accountList
         notifyDataSetChanged()
     }

@@ -56,7 +56,6 @@ class AddAccountDialog : DialogFragment() {
                 accountItem.id = accountViewModel.insert(accountItem)
 
                 display.log("Account created:- $accountItem")
-                display.toast("Hello")
                 dismiss()
             }
         }

@@ -5,12 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.moneytracker.adapters.AccountItemAdapter
-import com.example.moneytracker.dataModels.AccountModel
+import com.example.moneytracker.adapters.AccountAdapter
 import com.example.moneytracker.database.AccountDatabase
 import com.example.moneytracker.databaseClients.AccountDatabaseClient
 import com.example.moneytracker.databinding.FragmentAccountsBinding
@@ -21,7 +19,7 @@ import kotlinx.coroutines.launch
 class AccountsFragment : Fragment() {
     private lateinit var binding: FragmentAccountsBinding
 
-    private lateinit var accountAdapter: AccountItemAdapter
+    private lateinit var accountAdapter: AccountAdapter
 
     private lateinit var db: AccountDatabase
     private lateinit var display: Display
@@ -43,9 +41,9 @@ class AccountsFragment : Fragment() {
         db = AccountDatabaseClient.getInstance(requireContext())
         display = Display(requireContext())
 
-        accountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        accountViewModel = ViewModelProvider(this)[AccountViewModel::class.java]
 
-        accountAdapter = AccountItemAdapter(requireContext())
+        accountAdapter = AccountAdapter(requireContext())
     }
     private fun setListeners() {
         binding.accountsFragmentAddNewAccountButton.setOnClickListener {
